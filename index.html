@@ -182,24 +182,20 @@ dialog::backdrop{background:rgba(10,18,28,.6)}
 <script>
 /* =====================================================================
    HIER PFLEGST DU DEINE INHALTE.
-   Ergänzen: einen Eintrag kopieren, Text ändern.
-   Entfernen: den ganzen Eintrag zwischen { und }, löschen.
-   Am Design musst du nichts anfassen.
    ===================================================================== */
 
 const PROFIL = {
   name: "Gloria Antonio Dombaxe",
   initialen: "GA",
-  bild: "",                        // optional: Bild-URL oder leer lassen
+  bild: "",
   rolle: "Marketing, Social Media & Content",
   bio: "Strukturierte Detailhandelsfachfrau mit fundierter Berufserfahrung in Kundenberatung, Kundenbegleitung und Prozessorganisation (SBB). Leidenschaftliche Social Media Content Creatorin mit nachgewiesener Erfahrung im Markenaufbau (Ehrenamt). Ich verbinde operative Exzellenz mit kreativem Gespür und hoher Affinität für digitale Trends.",
-  zahlen: [                        // beliebig viele Kennzahlen
+  zahlen: [
     { wert: "Teilzeit", label: "Pensum" },
     { wert: "DE · PT · EN · FR", label: "Sprachen" }
   ],
   email: "g.antoniodombaxe@gmail.com",
   suche: "Ich suche: Teilzeitstelle als Marketing Assistant, Junior Marketing Managerin, Junior Creative Strategist oder im Bereich Social Media & Content · Eintritt nach Vereinbarung",
-  /* Links oben unter dem Profil. Zeile löschen = Button verschwindet. */
   links: [
     { label: "LinkedIn", url: "https://www.linkedin.com/in/dein-profil" },
     { label: "Instagram", url: "https://www.instagram.com/dein-profil" },
@@ -209,8 +205,6 @@ const PROFIL = {
   kontaktText: "Ich freue mich über Anfragen für Teilzeitstellen und Projekte im Bereich Social Media und Content."
 };
 
-/* Zahlenstreifen: nur Werte, die du belegen kannst. Zeile löschen = Zahl verschwindet.
-   Steht in "wert" eine Zahl, zählt sie beim Scrollen hoch. */
 const KENNZAHLEN = [
   { wert: "ca. +40 %", label: "Engagement-Rate im Content-Creator-Projekt" },
   { wert: "5", label: "Social-Media-Kanäle betreut" },
@@ -218,10 +212,8 @@ const KENNZAHLEN = [
   { wert: "X", label: "Creator im UGC-Pilotprojekt (Zahl ergänzen)" }
 ];
 
-/* Tools-Leiste */
 const TOOLS = ["Adobe Premiere Pro", "InDesign", "Lightroom", "Canva", "CapCut", "InShot", "Meta Business Suite", "Google Analytics", "Drupal", "WordPress", "Ticketing-System", "MS Office"];
 
-/* Die Kreise unter dem Profil. Symbol ist ein Emoji. */
 const HIGHLIGHTS = [
   { symbol: "👋", titel: "Über mich", text: "Detailhandelsfachfrau EFZ mit Erfahrung in Kundenberatung, Live-Marketing und Social Media. Ich bringe Kommunikationsstärke, Zuverlässigkeit und ein offenes Auftreten mit und begeistere mich für Street Culture, Sneaker und Streetwear." },
   { symbol: "🛠️", titel: "Tools", text: "Adobe Premiere Pro, InDesign, Lightroom, Canva, CapCut, InShot, Meta Business Suite, Google Analytics (Basics), Drupal, WordPress, Ticketing-System, MS Office (Excel, PowerPoint, Word)." },
@@ -229,7 +221,7 @@ const HIGHLIGHTS = [
   { symbol: "🌍", titel: "Sprachen", text: "Deutsch (Muttersprache), Portugiesisch und Englisch (gute Kenntnisse), Französisch (einfache Kenntnisse)." }
 ];
 
-const IMG_KANAELE = "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAoHCAkIBgoJCAkMCwoMDxoRDw4ODx8WGBMaJSEnJiQhJCMpLjsyKSw4LCMkM0Y0OD0/QkNCKDFITUhATTtBQj//2wBDAQsMDA8NDx4RER4/KiQqPz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz//wAARCAGvAoADASIAAhEBAxEB/8QAGwAAAQUBAQAAAAAAAAAAAAAAAQACAwQGBQf/xABJEAABAwIDBAcGBAQFAwIFBQABAAIDBBEFITESQVFhBhMicYGRoRQyQrHB0SNSYnIHQ1PhFSQzkvBjgvEWojRUc5OyJTVEg9L/xAAbAQACAwEBAQAAAAAAAAAAAAAAAQIDBAUGB//EADQRAAICAQMCAwYGAwACAwAAAAABAgMRBCExEkEFE1EiMmFxkfAUgaGxwdEjQuEGUjM08f/aAAwDAQACEQMRAD8A8sRSSXRMQkUkkxCSSRQAkkkUABFJJAhJIhJMBJWSSQAkkkkCEigjuQAEUkkAJJKyKYASRQQArIpJIEKySO5JAAKSSNt6AAi1pe8NaLucbAc0l1+jVJ7TibZCOxCNrx3f85KM5KEXJl+mpd90a13Zq8OpBS0McQ+Ftu8qeGmkq6uKnhH4krwxvK+/6qwQAywXe6E0PW4jNWvHZgbss/c77D5rEtU3we7u6dPQ5Lstv4NlS08dJSRU8ItHEwMb3BZbp7iRjposNidYzDbmt+QHIeJ+S12QFybDeeC8qxirOJYrUVR917rM5NGTfT5qEZqMupnC8Nod9znLhb/mcktQLFZLEOrWtao9J5RW2EtlX6ainq5eqpYXzSflY29u/gu3T9C8SlAMzoKccHPLj5D7q1apGe2dVXvySMoWppC3H/oSbZzxGK//ANF33VWo6EYiqEwzU03K5YfUfVWR1cfUzLVaWTwpmRY58bw+N7mPGjmkgjxC7VH0qxqksBWGdo+Gdof66+qrV2FVmHutWUskIOjnDsnxGspsOMyNbyO6s2lrcLn4X30Sutr6eikjZVTJEZYy+MOYWhzbgmy9A2XqWJ38mGqIppI/8T1p6LqI5rW1ETpYn6tY5wcdQdQCOIXn209Z1eK6gmq5XUsk74onPe4Mb1jpoCfgt918HleK8t4hWSRSSACSSSQAkkt6AFvSQCSHulvSAEuSSAKSSSBHsl0kpATa8FqNtkLlcKukgN3OaN7tByT0l0hF3OAAvuS20tYnIK3U18NJTvqJn7UTRdzuC3RROlkbHEwuynaA0XE3Xf6XU0FFQ+2U8jnv1mdewPguZ0qxuqp6g0NNMYzGNXjQkncCuHqdd5W6aT38jq6XSeVuW6J4l0qkp55aShhfLIwuY9zRYE+CyVPhlfVPjZHTOG67t1l3+j2Mvqqh0FTI57nC7HF9zxH0Xa3fVcqvqZXZPqdajT0qf0MhhvS2lpXNfWTB2vNnZb/Wyp/EOjNTTuM9K7boS4D63V1Fq57m7VwO5dGnr5b991v6d15PqctLq7k42jJ4L0jq8XpW1ED4gxt/gduv3cFrG3Y8teGub4EWWd2j9138PqjTVUNU02MTw76K7KzJjiu66N2q2rN7vbf9yXpLq+M9a21O/q6s1h+LqV0bK6i1s/XsvxXf3u7j6q10tq+B0V2F1vW0+W+Jp49mU1McdVz8JqJg41dOwaDdfuXUuC12oN9yY26SjH3Yt2R2l0mCSe9I088/V6B0rO9t5fDk0vGj2u8iF8639F9Id6aRzTIwucN5uN3N1uP4i9M311M+kltnGbtd/mC5lZ6o6XTV6aT57P5MuFpEclvS9bHqA89LgXJ2aXF1m004Mbt7g0cyvRuC9F8OwmntI32uo/nS2cfIaLh9FOmj5cajppX3hh/eBvtO/uvRd91y9Rq3Pyw/wDo7Wn0qXv5X5/I7lWwOaeP7b7h5q2OomgmjmhdslheHscOBAstk2y4h6011Uaeqq6dpxOndfVz47sKk8Lp9VzL47uY1NPl6l8d0yq4T1KxOikjjpqptQxth1jwHN82lbLpL0uxLGaNlK+jkhMbtp0rHXbexHwutH3XWn+E3t1q3vU/wD7KxeqW0n+RzajpZ6UcvJmP8M6SYpSSsZUwvqqc2BDtXtvuubrWz6DY52qqnp5371NIfp6q4nB1Pz33W2k8vK5Gop3C8H5GjV6Z25+V2mY/2fK66rQ1k9LWxVVLKZJmOBa4f/Xj+i3D+j2K0rXTVkMccY3sMgcT5AL0NfGj9I5n0cjr61Zk8yXb56k2c2x5XWPc98jnuu5xJJvuS6P5f190uB01S+qjiiLp32a22rnv4IOW0sL5o5WvY27mG4t3rpYnhUuFUzaupmh0d8ow5tz58rLVN74v7v2/8AZfptU7oOWzL+Gf7f6ObpB52T7P5Q1d5r7Fp6q7nL37rYp6B9VSxVTJKaQSMDrNcLh19y9p6P9IqXH47d5p6poyncb+g5rPqNN55P5O7qdU6aT5/F+Cq+B7Wuc4WAGpKzdZ0oxKW8cM3soP+o7N3oF1cSw6lr4dircW14uNx5rOswWvge4SwktBuHjVtzsuvU6bdJ+Xv8A1OO2j0jipz9l/wAC+k2N3d73z+V3u189yXm/wBmKq+M3l33K9tHq4tVptN9sPj7MxuXF2t1j0uA31k7g5wN2t2vNY8a3K9i6S4X9pw98rL1EDbuaPzNG8ePkvP+o3b+Tq6eTllNfDO76S4d9iw2jhdbtZt89v6nH1RukLp8ZpuzM2aNvuu04+C5Gg96/Fct15L+y9LplzNfi0O3p7qI56K5o0Nf0S8wzKwevJ67iO77Ww2v3q6N0d7Jp39X60B2T7bT4uC12K0v7q+WlBvsubtfwK7NqNqOX7p8fscfVw922bX58GfpZfsqqN7h8jrcS3uVb7r2yN22uB/mC5u507nucdSSbprb8d96yXqTfy2/7/AGb9X/4+b7v9h8j7p2wN3j1S33vdbN0l3d+v6bLq6d/2c/Tf+jZg2C41K9q95qL9l3n8k1bQ1mJVEVJQQvnmkdkxjc81fX6nTTbbfY4ek0Op1k0uPffsZxt53W20t5a2N/vG6b328/kvR8G6MUsGyeuNquod0a30b+75rb0lFTUlNFSU0TYoYxbYwWCe60V05W8mXyTVRjLjjH59v8Asr/Zqp3dJ9F0bK6u32gfy/2uV014022n8OtfC6x39P5f6XW52Vb6R2f4TdbZ6a3W63eD/X3X6n/AM8o+fuv2X8E/Xn7vT3Vl4Xhdbjc98Ooy7c9+rpH/7WjM/RcmfE6CihfUVcsdPTsFy5zraKzquVvCSN1mj1Gjhvvhv4f0Y2SKSaRscUb5JHfCxoJJ8As/ieDUWHRtM89TUVEnZijYdhvjfuCyn3m9Gq5dZ2+nZ8d+yX3uO5d5VvK000U7b3+Fw5q5D1RqqeZlPHFTU9W+QNsXWbs+d1Wj6PVLd7o6N82463Fz4rVp63dYy+RjqNVDTQ3y/v2Q4b0dxLFaYVcUUdNTu+GYu3XfhdZXG+i2L0lM+qp5KWrhjF3NaT29O8br6GwuioaLCqelhiYyCCBsUdoz7wAzPmt/f8AI80fUv8As+S7b3T15vPgnv4aPLRaqvT1Ocd9tq+b7v7nylX7Fp6q7nB+z2q8t91sE80lPI6KZi0te02IK1u1tX716d9pqq579z58U3vO430T3S7aA330vZbq5xTyeUaWpW3z8r3v2W96ePkkA1N/JbK639E99uFktyv3S47R5rX6nUfT5vF8nQp0uT5vA99+N0vjkvZ3pGkC3Oyy+L4jUYfh7qqmi9re1zWsbcdpvD8bovUafzyyv3YvW6yumeXN+w/Ea+gw6iNdVy9nGGhuXvO5rRvefBeX4j7R8Uqpm4XSUWBUzT8LYItucD/qPkvFsf0hxXGKjquIrqiU3s1zgGE/2tWqWqXhLojh1OjaWpynzLw5f3+h7Bi/tB6QUw+w4NhtLUW/NJL1h725KkofaaZjq0430eo52H87449i487l4m1997X+ia13O+4t4qFqm+C2qN8W3Z69019oy+b2fEcHo8Rhv7lRT9U+3zNuuZhdD6HDKVtfimGUdXUSOudtoIjaO8nUr55je91g5xuOdtLq4H0txXAZMqepp6wO1ZNLr6O3Faaeqs5y8kL6aE/Djjx7PRcf6I7Z7YJum2I/aKz8w6bN9o+G1XvvqY6mned78pI+6xW2L9LcYxGkNNbvaWnf+aEudcO+Nn0K0u+b2O51G7tN1S61r4tL6FsdFp5fv4yf7M9K6B8Prm9W+pqqZ2o7R5d6N1i8X6VYdh8zxNUPqqhv9GnvcfzO0XxL11O2lprlW5J37V6VfV35W7L/g58tDptrTcb3+p6piPtvn7tPC6kjd4sY67vmdFncd9peL113UzYaJ3D8726+oXg7zcbqO481v2dF2p8t/wChlqej+n0u9T6Xy7/6nqmC9rWIw2bW00VbGLXN7SH8+Wk+K9IwevwmvwnsMHrYq2nbu6pw8NneCOa/P3nff5p7y02aSQeB2qjUv5Z3Rk1PR4507Mpprw/zP1dknrS7W0/wAUfJc+iqammpammpJTEKjd9p4b4W5aF+eWG+0HHOEUDa41FFGNfyuB1/Pz43XWwX2h66FobWRUteANXC8Tz+bT9FtdD7V/FhW4dJz6bf3wXq8sVwHtdmQ20rR69a4Dq0v3r3DDejONUNg+jpqn/pS3PzXZoOl+IV4Dqaqq7aH+m+2vmtFepU+eM18F6uH+y5UvL9v3PJ+j0VfVYXW1FHTSTtpspcxoHe4X+S8kO0Ttu2/O4Wvmvvq06a/S55u53H2uWuxXo7hdewtp2tppz8L4wW9u48Vz9Zql9S24q2S9HoH/AMebW280q5z54PLhL9+q0/N7+i32J9HsRxCnfVUUDW00btu8rzbrvN2i4X1Y6M4a6lkhlppZIXtvsw7Jb4tXzvF6yHDMVqaOndM6npnbUTpXbX/sHivR+ifZ48Wz8U97j8bN3J3/ANL1t2q2cK57f5PPp9O8W/m+P2f6f59iL2gN03XX5lqjkuqR3N413X5q2bN7c8d998ll8m9tL3+b0t4uC12A34Wd2vHqubtP/ANV81ut3N7/5X57lrtk2Xk6X05aYJtsn+q2x5O2l242F7Zf5aLXZb61+l3O9z4d11q9l2t2t8vC6a7i48L+G3mrtk2a6u3bK3Z328FvP1K60c609t2d0t/t81rtuN+Fn7l1tsN0t4X7rpu63dY5j/AJu66t1L0s0Z9p1t4Hw5K6YdYg7u7z+b1s11t7L6N3b8lrqXv9V5d90t7s8d1/FbrbXddf6bLe2w2d2aK8wWv96d18k8yWnbu+3vuvr1v6LrW999l5bL7b3u63t3u6+3rPgv//Z";
+const IMG_KANAELE = "data:image/jpeg;base64,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";
 
 const HIGHLIGHT_INHALTE = HIGHLIGHTS.map((h, i) => ({
   ...h,
@@ -296,52 +288,30 @@ HIGHLIGHT_INHALTE.forEach((item,i)=>{
 
 const projektDaten=[
   {
-    kat: "Social Media & Community",
-    titel: "Ehrenamtliches Content-Creator-Projekt",
-    beschrieb: "Aufbau und strategische Betreuung von Social-Media-Kanälen mit starkem Fokus auf Engagement, Community-Aufbau und trendorientierte Videoinhalte.",
-    details: "Durch gezielte Content-Planung, Trendanalysen und Community-Management konnte die Engagement-Rate um ca. 40 % gesteigert werden. Betreuung von 5 Kanälen und Umsetzung zielgerichteter Video-Ads.",
-    metriken: [
-      { wert: "+40%", label: "Engagement-Rate" },
-      { wert: "5", label: "Kanäle" }
-    ],
-    bilder: [
-      { src: IMG_KANAELE, alt: "Kanäle Übersicht", beschreibung: "Einblicke in die Content-Performance" }
-    ],
-    farbe: "kobalt"
+    titel: "Corporate & professionell",
+    text: "Inhalte mit klarer Botschaft für Organisationen, Studierende und Partner: Newsletter, Websites, Events und bezahlte Kampagnen.",
+    kacheln: [
+      { gross: true, farb: "orange", kzahl: "5 Kanäle", text: "Social Media und bezahlte Video-Ads", small: "5 Kanäle · Video-Ads" },
+      { farb: "kobalt", kzahl: "Mail", text: "Newsletter, Drupal und WordPress", small: "Konzept, Redaktion, termintreuer Versand" },
+      { farb: "salbei", kzahl: "Perks", text: "Firmenpartner gewonnen, Benefit-...", small: "Neue Rabatte und Angebote verhandelt" },
+      { farb: "orange", kzahl: "Live", text: "Events, Messen und Spendenaktion", small: "Mitorganisation vor Ort" }
+    ]
   },
   {
-    kat: "Retail & Prozessmanagement",
-    titel: "Kundenbegleitung & operative Exzellenz",
-    beschrieb: "Fundierte Erfahrung in der direkten Kundenberatung, Betreuung und Prozessorganisation im Detailhandel und öffentlichen Verkehr (SBB).",
-    details: "Sicherstellung eines reibungslosen Ablaufs, hohe Zuverlässigkeit in stressigen Situationen und stets kundenorientiertes Handeln als Fundament für starke Markenkommunikation.",
-    metriken: [
-      { wert: "100%", label: "Zuverlässigkeit" },
-      { wert: "SBB", label: "Erfahrung" }
-    ],
-    bilder: [],
-    farbe: "salbei"
+    titel: "Gen-Z-Content",
+    text: "Kurzvideos und Creator-Formate auf TikTok und Instagram Reels, nah an der Zielgruppe und im Ton der Plattform.",
+    kacheln: [
+      { gross: true, farb: "kobalt", kzahl: "UGC", text: "UGC-Pilotprojekt eigenverantwortlich geleitet", small: "Neues Content-Format von A bis Z" },
+      { farb: "salbei", kzahl: "ca. +40 %", text: "Content Creatorin: Reels und TikTok", small: "Engagement-Rate ca. +40 %" }
+    ]
   },
   {
-    kat: "Strategie & Bildung",
-    titel: "Weiterbildung Marketingmanagerin HF",
-    beschrieb: "Start des berufsbegleitenden Teilzeitstudiums zur Vertiefung von Marketing-Know-how, strategischer Markenführung und digitalem Campaigning.",
-    details: "Fundierte Ausbildung (2026–2029) zur Verbindung von praktischer Retail- und Content-Erfahrung mit fundiertem strategischen Managementwissen.",
-    metriken: [
-      { wert: "2026", label: "Start HF" }
-    ],
-    bilder: [],
-    farbe: "gelb"
-  },
-  {
-    kat: "Content Creation",
-    titel: "Visuals, Reels & Storytelling",
-    beschrieb: "Sicherer Umgang mit gängigen Creator-Tools zur Erstellung von packendem Videomaterial und ästhetischem Bildcontent.",
-    details: "Von Premiere Pro und CapCut bis Canva und Lightroom – zielgruppengerechte Aufbereitung für diverse Social-Media-Plattformen.",
-    metriken: [
-      { wert: "Top", label: "Tools" }
-    ],
-    bilder: [],
-    farbe: "orange"
+    titel: "Ehrenamt: Social-Media-Marketing",
+    text: "Social-Media-Marketing aus eigener Initiative, neben Ausbildung und Beruf: Content, Community-Aufbau, Event-Begleitung und Auswertung der Zahlen.",
+    kacheln: [
+      { gross: true, farb: "orange", kzahl: "61'000+", text: "Social-Media-Marketing für eine internationale Organisation", small: "Über 61'000 Profilaufrufe in 30 Tagen" },
+      { farb: "orange", kzahl: "500", text: "Social-Media-Marketing: Community für...", small: "500 Follower, über 1'800 Aufrufe in 30 Tagen" }
+    ]
   }
 ];
 
@@ -353,15 +323,17 @@ function baueProjekte(){
     bereich.className='bereich';
     bereich.innerHTML=`
       <h2 class="bereichtitel">${p.titel}</h2>
-      <p class="bereichtext">${p.beschrieb}</p>
-      <div class="raster" style="margin-top:16px;">
-        <div class="kachel" data-farbe="${p.farbe}" style="grid-column:span 2; grid-row:span 2; cursor:pointer;" onclick="oeffneProjekt(${idx})">
-          <span class="kzahl">${p.metriken[0]?.wert || ''}</span>
-          <div>
-            <strong>${p.titel}</strong>
-            <small>${p.metriken[0]?.label || p.kat}</small>
-          </div>
-        </div>
+      <p class="bereichtext">${p.text}</p>
+      <div class="raster">
+        ${p.kacheln.map((k,kid)=>{
+          return `<button class="kachel ${k.gross?'gross':''}" data-farbe="${k.farb}" onclick="oeffneProjekt(${idx},${kid})">
+            <span class="kzahl">${k.kzahl}</span>
+            <div>
+              <strong>${k.text}</strong>
+              <small>${k.small}</small>
+            </div>
+          </button>`;
+        }).join('')}
       </div>
     `;
     projMain.appendChild(bereich);
@@ -369,15 +341,15 @@ function baueProjekte(){
 }
 baueProjekte();
 
-const dlg=el('dlg'), dlgInhalt=el('dlgItem') || el('dlgInhalt');
-function oeffneProjekt(i){
-  const p=projektDaten[i];
+const dlg=el('dlg'), dlgInhalt=el('dlgInhalt');
+function oeffneProjekt(sIdx, kIdx){
+  const k=projektDaten[sIdx].kacheln[kIdx];
   dlgInhalt.innerHTML=`
     <button class="zu" onclick="dlg.close()">✕</button>
-    <span class="kat">${p.kat}</span>
-    <h2>${p.titel}</h2>
-    <p><b>${p.beschrieb}</b></p>
-    <p style="margin-top:12px;">${p.details}</p>
+    <span class="kat">${projektDaten[sIdx].titel}</span>
+    <h2>${k.kzahl}</h2>
+    <p><b>${k.text}</b></p>
+    <p style="margin-top:12px;">${k.small}</p>
   `;
   dlg.showModal();
 }
