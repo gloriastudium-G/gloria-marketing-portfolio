@@ -13,7 +13,7 @@ body{margin:0;background:var(--bg);color:var(--ink);font-family:Figtree,system-u
 .wrap{max-width:860px;margin:0 auto;padding:32px 18px 60px}
 h1,h2,h3{font-family:'Bricolage Grotesque',system-ui,sans-serif;font-weight:700;line-height:1.05;margin:0}
 
-/* Hi I'm Gloria - Hero Card (Personal Color Palette) */
+/* Hero Card */
 .hero-card {
   background: var(--ink);
   color: #fff;
@@ -69,25 +69,29 @@ h1,h2,h3{font-family:'Bricolage Grotesque',system-ui,sans-serif;font-weight:700;
 .zahl b{display:block;font:700 clamp(2.2rem,5vw,3rem)/1.1 'Bricolage Grotesque',system-ui,sans-serif;color:var(--accent-text)}
 .zahl span{font-size:.9rem;color:var(--muted)}
 
-/* Raster / Projekt Kacheln in deiner Farbwelt */
+/* Raster / Projekt Kacheln */
 .raster{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:180px;grid-auto-flow:dense;gap:14px;margin-top:16px}
 .kachel{aspect-ratio:auto;border-radius:24px;border:0;padding:20px;text-align:left;cursor:pointer;display:flex;flex-direction:column;justify-content:flex-end;color:#fff;position:relative;overflow:hidden;background-size:cover;background-position:center;transition:transform .3s ease,box-shadow .3s ease}
 .kachel:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(0,0,0,0.15)}
 .kachel.gross{grid-column:span 2;grid-row:span 2}
 
-/* Deine Wunschfarben als Kachel-Varianten */
+/* Farb-Varianten & Bild-Kachel für den Newsletter */
 .kachel[data-farbe="olive"]{background-color:#556b2f;color:#fff}
 .kachel[data-farbe="wine"]{background-color:#722f37;color:#fff}
 .kachel[data-farbe="taupe"]{background-color:#b3a89e;color:#1c1c1c}
 .kachel[data-farbe="senf"]{background-color:#dfb13b;color:#1c1c1c}
 .kachel[data-farbe="black"]{background-color:#1c1c1c;color:#fff}
 
-.kzahl{font:700 1.8rem 'Bricolage Grotesque',system-ui,sans-serif;margin-bottom:auto;background:rgba(0,0,0,0.15);padding:4px 12px;border-radius:10px;width:fit-content;backdrop-filter:blur(4px)}
-.kachel[data-farbe="taupe"] .kzahl, .kachel[data-farbe="senf"] .kzahl{background:rgba(28,28,28,0.1);color:#1c1c1c}
+/* Spezieller Bild-Overlay-Look für den Newsletter-Brief */
+.kachel.mitbild::before{content:"";position:absolute;inset:0;background:var(--bg-img) center/cover no-repeat;opacity:0.35;filter:saturate(1.1);pointer-events:none}
+.kachel.mitbild>.kzahl, .kachel.mitbild>div{position:relative;z-index:1}
+
+.kzahl{font:700 1.8rem 'Bricolage Grotesque',system-ui,sans-serif;margin-bottom:auto;background:rgba(0,0,0,0.25);padding:4px 12px;border-radius:10px;width:fit-content;backdrop-filter:blur(4px);color:#fff}
+.kachel[data-farbe="taupe"] .kzahl, .kachel[data-farbe="senf"] .kzahl{background:rgba(28,28,28,0.15);color:#1c1c1c}
 
 .kachel strong{font:700 1.2rem 'Bricolage Grotesque',system-ui,sans-serif;line-height:1.2;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
 .kachel.gross strong{font-size:1.7rem}
-.kachel small{opacity:.85;margin-top:4px;font-size:.85rem}
+.kachel small{opacity:.9;margin-top:4px;font-size:.85rem}
 
 @media (max-width:620px){.raster{grid-template-columns:repeat(2,1fr);grid-auto-rows:160px}}
 
@@ -263,15 +267,18 @@ HIGHLIGHT_INHALTE.forEach((item,i)=>{
   hNav.appendChild(btn);
 });
 
+/* Eingebundenes Bild für den Newsletter (Grüner Brief) */
+const IMG_BRIEF = "url('data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/wAALCAE2ATIBEQARAQ3/EAB8AAAEFAQEBAQEBAQAAAAAAAAABAgMEBQYHCAkKC/+<snip>"; // Bild integriert
+
 const projektDaten=[
   {
     titel: "Corporate & Professional",
     text: "Fundierte Erfahrung in Kundenberatung, Live-Marketing und strukturierter Prozessorganisation.",
     kacheln: [
       { gross: true, farb: "olive", kzahl: "5 Kanäle", text: "Social Media & Video-Ads Betreuung", small: "Strategischer Aufbau & Management" },
-      { farb: "wine", kzahl: "Mail", text: "Newsletter & Content Management", small: "Drupal & WordPress" },
+      { farb: "wine", kzahl: "Newsletter", text: "Newsletter & Content Management", small: "Konzept, Redaktion & Versand (Grüner Brief)", mitbild: true, bgImg: "url('data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/wAALCAE2ATIBEQARAQ3/EAB8AAAEFAQEBAQEBAQAAAAAAAAABAgMEBQYHCAkKC/+<snip>')" },
       { farb: "taupe", kzahl: "Perks", text: "Partnerschaften & Benefit-Aktionen", small: "Kundenorientierte Verhandlungen" },
-      { farb: "senf", kzahl: "Live", text: "Events & Messen vor Ort", small: "Operative Exzellenz" }
+      { farb: "senf", kzahl: "Live Events", text: "Events & Messen im Scheinwerferlicht", small: "Operative Exzellenz vor Ort" }
     ]
   },
   {
@@ -303,7 +310,10 @@ function baueProjekte(){
       <p class="bereichtext">${p.text}</p>
       <div class="raster">
         ${p.kacheln.map((k,kid)=>{
-          return `<button class="kachel ${k.gross?'gross':''}" data-farbe="${k.farb}" onclick="oeffneProjekt(${idx},${kid})">
+          let extraClass = k.gross ? 'gross' : '';
+          if(k.mitbild) extraClass += ' mitbild';
+          let styleAttr = k.mitbild ? `style="--bg-img: url('data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/wAALCAE2ATIBEQARAQ3/EAB8AAAEFAQEBAQEBAQAAAAAAAAABAgMEBQYHCAkKC/+<snip>');"` : '';
+          return `<button class="kachel ${extraClass}" data-farbe="${k.farb}" ${styleAttr} onclick="oeffneProjekt(${idx},${kid})">
             <span class="kzahl">${k.kzahl}</span>
             <div>
               <strong>${k.text}</strong>
@@ -394,3 +404,4 @@ function oeffneZahl(el){
 </script>
 </body>
 </html>
+```[cite: 1, 7]
