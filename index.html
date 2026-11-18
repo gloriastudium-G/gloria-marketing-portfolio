@@ -75,19 +75,19 @@ h1,h2,h3{font-family:'Bricolage Grotesque',system-ui,sans-serif;font-weight:700;
 .kachel:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(0,0,0,0.15)}
 .kachel.gross{grid-column:span 2;grid-row:span 2}
 
-/* Farb-Varianten & Bild-Kachel für den Newsletter */
+/* Farb-Varianten */
 .kachel[data-farbe="olive"]{background-color:#556b2f;color:#fff}
 .kachel[data-farbe="wine"]{background-color:#722f37;color:#fff}
 .kachel[data-farbe="taupe"]{background-color:#b3a89e;color:#1c1c1c}
 .kachel[data-farbe="senf"]{background-color:#dfb13b;color:#1c1c1c}
 .kachel[data-farbe="black"]{background-color:#1c1c1c;color:#fff}
 
-/* Spezieller Bild-Overlay-Look für den Newsletter-Brief */
-.kachel.mitbild::before{content:"";position:absolute;inset:0;background:var(--bg-img) center/cover no-repeat;opacity:0.35;filter:saturate(1.1);pointer-events:none}
+/* Bild-Overlay Look für den Brief */
+.kachel.mitbild{background-image: var(--bg-img); background-size: cover; background-position: center;}
+.kachel.mitbild::before{content:"";position:absolute;inset:0;background:rgba(28,28,28,0.45);pointer-events:none}
 .kachel.mitbild>.kzahl, .kachel.mitbild>div{position:relative;z-index:1}
 
 .kzahl{font:700 1.8rem 'Bricolage Grotesque',system-ui,sans-serif;margin-bottom:auto;background:rgba(0,0,0,0.25);padding:4px 12px;border-radius:10px;width:fit-content;backdrop-filter:blur(4px);color:#fff}
-.kachel[data-farbe="taupe"] .kzahl, .kachel[data-farbe="senf"] .kzahl{background:rgba(28,28,28,0.15);color:#1c1c1c}
 
 .kachel strong{font:700 1.2rem 'Bricolage Grotesque',system-ui,sans-serif;line-height:1.2;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
 .kachel.gross strong{font-size:1.7rem}
@@ -177,7 +177,7 @@ dialog::backdrop{background:rgba(28,28,28,0.6);backdrop-filter:blur(4px)}
 <section class="kontakt" id="kontakt">
   <p class="nr" style="margin-top:0">(04) Get in touch</p>
   <h2 id="kontaktTitel">Lass uns zusammenarbeiten!</h2>
-  <p id="kontaktText">Ich freue mich über spannende Anfragen für Teilzeitstellen und kreative Social-Media-Projekte.</p>
+  <p id="kontaktText">Ich freue mich über spannende Anfragen für Teilzeitstellen und kreative Social-Media-Projects.</p>
   <a class="btn" id="mail2" style="background:var(--ink); color:#fff;">E-Mail schreiben ✉️</a>
 </section>
 
@@ -267,8 +267,8 @@ HIGHLIGHT_INHALTE.forEach((item,i)=>{
   hNav.appendChild(btn);
 });
 
-/* Eingebundenes Bild für den Newsletter (Grüner Brief) */
-const IMG_BRIEF = "url('data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/wAALCAE2ATIBEQARAQ3/EAB8AAAEFAQEBAQEBAQAAAAAAAAABAgMEBQYHCAkKC/+<snip>"; // Bild integriert
+/* Bild für den grünen Brief */
+const IMG_BRIEF = "url('data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/wAALCAE2ATIBEQARAQ3/EAB8AAAEFAQEBAQEBAQAAAAAAAAABAgMEBQYHCAkKC/+<snip>";
 
 const projektDaten=[
   {
@@ -276,7 +276,7 @@ const projektDaten=[
     text: "Fundierte Erfahrung in Kundenberatung, Live-Marketing und strukturierter Prozessorganisation.",
     kacheln: [
       { gross: true, farb: "olive", kzahl: "5 Kanäle", text: "Social Media & Video-Ads Betreuung", small: "Strategischer Aufbau & Management" },
-      { farb: "wine", kzahl: "Newsletter", text: "Newsletter & Content Management", small: "Konzept, Redaktion & Versand (Grüner Brief)", mitbild: true, bgImg: "url('data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/wAALCAE2ATIBEQARAQ3/EAB8AAAEFAQEBAQEBAQAAAAAAAAABAgMEBQYHCAkKC/+<snip>')" },
+      { farb: "wine", kzahl: "Newsletter", text: "Newsletter & Content Management", small: "Konzept, Redaktion & Versand", mitbild: true, bgImg: "url('data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/wAALCAE2ATIBEQARAQ3/EAB8AAAEFAQEBAQEBAQAAAAAAAAABAgMEBQYHCAkKC/+')" },
       { farb: "taupe", kzahl: "Perks", text: "Partnerschaften & Benefit-Aktionen", small: "Kundenorientierte Verhandlungen" },
       { farb: "senf", kzahl: "Live Events", text: "Events & Messen im Scheinwerferlicht", small: "Operative Exzellenz vor Ort" }
     ]
@@ -312,7 +312,7 @@ function baueProjekte(){
         ${p.kacheln.map((k,kid)=>{
           let extraClass = k.gross ? 'gross' : '';
           if(k.mitbild) extraClass += ' mitbild';
-          let styleAttr = k.mitbild ? `style="--bg-img: url('data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/wAALCAE2ATIBEQARAQ3/EAB8AAAEFAQEBAQEBAQAAAAAAAAABAgMEBQYHCAkKC/+<snip>');"` : '';
+          let styleAttr = k.mitbild ? `style="background-image: linear-gradient(rgba(28,28,28,0.35), rgba(28,28,28,0.35)), url('data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/wAALCAE2ATIBEQARAQ3/EAB8AAAEFAQEBAQEBAQAAAAAAAAABAgMEBQYHCAkKC/+'); background-size: cover; background-position: center;"` : '';
           return `<button class="kachel ${extraClass}" data-farbe="${k.farb}" ${styleAttr} onclick="oeffneProjekt(${idx},${kid})">
             <span class="kzahl">${k.kzahl}</span>
             <div>
@@ -404,4 +404,3 @@ function oeffneZahl(el){
 </script>
 </body>
 </html>
-```[cite: 1, 7]
